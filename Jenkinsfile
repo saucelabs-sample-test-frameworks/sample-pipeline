@@ -4,7 +4,7 @@ pipeline {
     stages {
         stage('Run Static Code Analysis') {
             steps {
-                echo 'Passed'
+                sh "node greeting.js"
             }
         }
         stage('Run Unit Tests') {
