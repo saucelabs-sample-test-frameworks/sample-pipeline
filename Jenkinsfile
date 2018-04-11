@@ -7,11 +7,6 @@ pipeline {
                 sh "node greeting.js"
             }
         }
-        stage('Run Unit Tests') {
-            steps {
-                echo 'Passed'
-            }
-        }
         stage('Deploy Application') {
             steps {
             	echo 'Passed'
