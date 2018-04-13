@@ -5,7 +5,7 @@ pipeline {
         stage('Run Static Code Analysis') {
             steps {
                 sh "apt-get install python3"
-                sh "pip install -r requirements.txt"
+                sh "pip3 install -r requirements.txt"
                 sh "flake8 ."
             }
         }
