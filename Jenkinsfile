@@ -14,7 +14,7 @@ pipeline {
         }
         stage('Run Unit Tests') {
             steps {
-                sh 'npm test'
+                sh 'npm run test-single-run'
             }
         }
         stage('Deploy Application') {
