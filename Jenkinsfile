@@ -24,7 +24,7 @@ pipeline {
         }
         stage('Run Functional Tests') {
             steps {
-                sh 'npm run protractor''
+                sh 'npm run protractor'
             }
         }
     }
