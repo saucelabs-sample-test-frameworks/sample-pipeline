@@ -2,14 +2,19 @@ pipeline {
     agent any
 
     stages {
+    	stage('Build Angular App'){
+            steps {
+	        sh "npm install"
+	    }
+	}
         stage('Run Static Code Analysis') {
             steps {
-                echo 'Passed'
+                sh './node_modules/jshint/bin/jshint app/ --exclude app/bower_components'
             }
         }
         stage('Run Unit Tests') {
             steps {
-                echo 'Passed'
+                sh 'npm test'
             }
         }
         stage('Deploy Application') {
