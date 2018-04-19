@@ -1,22 +1,47 @@
-//jshint strict: false
+// conf.js
+// var HTTPSProxyAgent = require('https-proxy-agent');
+// var sauceRestAgent = new HTTPSProxyAgent("http://<proxy>:<port>")
+
 exports.config = {
+    sauceUser: process.env.SAUCE_USERNAME,
+    sauceKey: process.env.SAUCE_ACCESS_KEY,
+    
+    baseUrl: 'http://localhost:8000/index.html',
+    specs: ['scenarios.js'],
+    
+    // restartBrowserBetweenTests: true,
 
-  allScriptsTimeout: 11000,
+    onPrepare: function () {
+        var caps = browser.getCapabilities()
+    },
 
-  specs: [
-    '*.js'
-  ],
+    multiCapabilities: [{
+        browserName: 'firefox',
+        version: 'latest',
+        platform: 'OS X 10.10',
+        build: "CICD",
+        tunnelIdentifier: "myTunnel",
+        name: "firefox-tests",
+        shardTestFiles: true,
+        maxInstances: 25
+    }, {
+        browserName: 'chrome',
+        version: '41',
+        platform: 'Windows 7',
+        name: "chrome-tests",
+        build: "CICD",
+        tunnelIdentifier: "myTunnel",
+        shardTestFiles: true,
+        maxInstances: 25
+    }],
 
-  capabilities: {
-    'browserName': 'chrome'
-  },
+    onComplete: function () {
 
-  baseUrl: 'http://localhost:8000/',
-
-  framework: 'jasmine',
-
-  jasmineNodeOpts: {
-    defaultTimeoutInterval: 30000
-  }
-
-};
+        var printSessionId = function (jobName) {
+            browser.getSession().then(function (session) {
+                console.log('SauceOnDemandSessionID=' + session.getId() + ' job-name=' + jobName);
+            });
+        }
+        printSessionId("Insert Job Name Here");
+    }
+}
