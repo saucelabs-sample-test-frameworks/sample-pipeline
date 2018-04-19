@@ -14,17 +14,17 @@ pipeline {
         }
         stage('Run Unit Tests') {
             steps {
-                sh 'npm run test-single-run'
+                echo "run unit tests"
             }
         }
         stage('Deploy Application') {
             steps {
-            	echo 'Passed'
+            	sh 'npm run'
             }
         }
         stage('Run Functional Tests') {
             steps {
-                echo 'Passed'
+                sh 'npm run protractor''
             }
         }
     }
