@@ -6,6 +6,8 @@
   "repository": "https://github.com/angular/angular-seed",
   "license": "MIT",
   "devDependencies": {
+    "@angular/cli": "latest",
+    "@angular/core": "latest",
     "bower": "^1.7.7",
     "eslint-config-airbnb-base": "^12.1.0",
     "eslint-config-standard": "^11.0.0",
