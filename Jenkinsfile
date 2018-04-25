@@ -19,7 +19,7 @@ pipeline {
         }
         stage('Run Functional Tests') {
             steps {
-                sh 'npm run protractor'
+                sh './node_modules/protractor/bin/protractor e2e-tests/protractor.conf.js'
             }
         }
     }
