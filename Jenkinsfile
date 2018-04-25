@@ -19,6 +19,7 @@ pipeline {
         }
         stage('Run Functional Tests') {
             steps {
+                sh 'echo $SAUCE_USERNAME'
                 sh './node_modules/protractor/bin/protractor e2e-tests/protractor.conf.js'
             }
         }
