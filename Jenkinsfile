@@ -14,14 +14,14 @@ pipeline {
         }
         stage('Deploy Application') {
             steps {
-            	echo 'deploy app'
+            	sh 'node server.js'
             }
         }
         stage('Run Functional Tests') {
             steps {
                 sauce('e16593fe-6899-463b-9595-e5ba5eb46563') {
                     sauceconnect(options: '', sauceConnectPath: '') {
-                        sh 'node server.js & ./node_modules/protractor/bin/protractor e2e-tests/protractor.conf.js'
+                        sh './node_modules/protractor/bin/protractor e2e-tests/protractor.conf.js'
                     }
                 }
             }
