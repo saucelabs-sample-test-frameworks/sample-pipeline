@@ -16,6 +16,11 @@ exports.config = {
   onPrepare: function () {
         var caps = browser.getCapabilities()
         console.log(caps)
+
+        var userNameNull = (this.sauceUser !== null);
+        var userNameUndef = (this.sauceUser !== undefined);
+        console.log(`Username null? ${userNameNull}`);
+        console.log(`Username undefined? ${userNameUndef}`)
     },
 
   multiCapabilities: [{
