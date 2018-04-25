@@ -4,6 +4,7 @@ pipeline {
     stages {
         stage('Run Static Code Analysis') {
             steps {
+                sh "npm install"
                 sh 'npm run lint'
             }
         }
