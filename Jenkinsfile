@@ -4,7 +4,7 @@ pipeline {
     stages {
         stage('Run Static Code Analysis') {
             steps {
-                sh 'run npm lint'
+                sh 'npm run lint'
             }
         }
         stage('Run Unit Tests') {
