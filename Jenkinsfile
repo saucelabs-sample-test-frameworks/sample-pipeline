@@ -14,14 +14,14 @@ pipeline {
         }
         stage('Deploy Application') {
             steps {
-            	echo 'deploy app'
+            	sh 'npm start &'
             }
         }
         stage('Run Functional Tests') {
             steps {
                 sauce('e16593fe-6899-463b-9595-e5ba5eb46563') {
                     sauceconnect(options: '', sauceConnectPath: '') {
-                        sh 'node server.js & npm run protractor'
+                        sh 'npm run protractor'
                     }
                 }
             }
