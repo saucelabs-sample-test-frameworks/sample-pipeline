@@ -19,7 +19,7 @@ pipeline {
         }
         stage('Run Functional Tests') {
             steps {
-                sauce('e16593fe-6899-463b-9595-e5ba5eb46563') {
+                sauce("${env.SAUCE_ACCESS_KEY}") {
                     sh './node_modules/protractor/bin/protractor e2e-tests/protractor.conf.js'
                 }
             }
