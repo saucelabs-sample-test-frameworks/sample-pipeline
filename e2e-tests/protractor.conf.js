@@ -1,47 +1,58 @@
-// conf.js
-// var HTTPSProxyAgent = require('https-proxy-agent');
-// var sauceRestAgent = new HTTPSProxyAgent("http://<proxy>:<port>")
-
+//jshint strict: false
 exports.config = {
-    sauceUser: process.env.SAUCE_USERNAME,
-    sauceKey: process.env.SAUCE_ACCESS_KEY,
-    
-    baseUrl: 'http://localhost:8000/index.html',
-    specs: ['scenarios.js'],
-    
-    // restartBrowserBetweenTests: true,
+  sauceUser: process.env.SAUCE_USERNAME,
 
-    onPrepare: function () {
+  sauceKey: process.env.SAUCE_ACCESS_KEY,
+
+  // testobject_api_key: '59CE6AD64AE24CC5B1451EB76B833F2E',
+  sauceBuild: "angular-pipeline-demo: " + process.env.BRANCH_NAME + "-" + process.env.BUILD_NUMBER,
+
+  allScriptsTimeout: 11000,
+
+  specs: [
+    '*.spec.js'
+  ],
+
+  onPrepare: function () {
         var caps = browser.getCapabilities()
+        console.log(caps)
     },
 
-    multiCapabilities: [{
+  multiCapabilities: [{
         browserName: 'firefox',
         version: 'latest',
         platform: 'OS X 10.10',
-        build: "CICD",
-        tunnelIdentifier: "myTunnel",
         name: "firefox-tests",
         shardTestFiles: true,
         maxInstances: 25
-    }, {
-        browserName: 'chrome',
-        version: '41',
+    },{
+        browserName: 'firefox',
+        version: 'latest',
         platform: 'Windows 7',
-        name: "chrome-tests",
-        build: "CICD",
-        tunnelIdentifier: "myTunnel",
+        name: "firefox-tests",
         shardTestFiles: true,
         maxInstances: 25
-    }],
-
-    onComplete: function () {
-
-        var printSessionId = function (jobName) {
-            browser.getSession().then(function (session) {
-                console.log('SauceOnDemandSessionID=' + session.getId() + ' job-name=' + jobName);
-            });
-        }
-        printSessionId("Insert Job Name Here");
     }
-}
+  ],
+
+  // capabilities: {
+  //   'browserName': 'chrome'
+  // },
+
+  baseUrl: 'https://develop-angular-demo-app.cfapps.io/#!/view1',
+
+  framework: 'jasmine',
+
+  jasmineNodeOpts: {
+    defaultTimeoutInterval: 30000
+  },
+  onComplete: function () {
+
+      var printSessionId = function (jobName) {
+          browser.getSession().then(function (session) {
+              console.log('SauceOnDemandSessionID=' + session.getId() + ' job-name=' + jobName);
+          });
+      }
+      printSessionId("Angular/Protractor Demo Test Suite");
+  }
+};
