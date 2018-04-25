@@ -4,22 +4,26 @@ pipeline {
     stages {
         stage('Run Static Code Analysis') {
             steps {
-                echo 'Passed'
+                sh 'npm run lint'
             }
         }
         stage('Run Unit Tests') {
             steps {
-                echo 'Passed'
+                echo 'npm run test-single-run'
             }
         }
         stage('Deploy Application') {
             steps {
-            	echo 'Passed'
+            	sh 'npm start &'
             }
         }
         stage('Run Functional Tests') {
             steps {
-                echo 'Passed'
+                sauce('e16593fe-6899-463b-9595-e5ba5eb46563') {
+                    sauceconnect(options: '', sauceConnectPath: '') {
+                        sh 'npm run protractor'
+                    }
+                }
             }
         }
     }
