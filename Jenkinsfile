@@ -19,7 +19,7 @@ pipeline {
         }
         stage('Run Functional Tests') {
             steps {
-                sh 'ping -c 4 https://develop-angular-demo-app.cfapps.io'
+                sh 'npm run protractor'
             }
         }
     }
