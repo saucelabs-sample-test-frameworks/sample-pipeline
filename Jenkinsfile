@@ -14,12 +14,12 @@ pipeline {
         }
         stage('Deploy Application') {
             steps {
-            	sh 'npm run start'
+            	echo 'deploy app'
             }
         }
         stage('Run Functional Tests') {
             steps {
-                echo 'Passed'
+                sh 'npm run protractor'
             }
         }
     }
