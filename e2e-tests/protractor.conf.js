@@ -39,7 +39,7 @@ exports.config = {
   //   'browserName': 'chrome'
   // },
 
-  baseUrl: 'http://localhost:7225/index.html',
+  baseUrl: "https://cicd-angular-demo-app.cfapps.io/",
 
   framework: 'jasmine',
 
