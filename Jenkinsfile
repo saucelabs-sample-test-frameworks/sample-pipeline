@@ -10,11 +10,7 @@ pipeline {
         }
         stage('Run Unit Tests') {
             steps {
-                sauce('e16593fe-6899-463b-9595-e5ba5eb46563') {
-                    sauceconnect(options: '', sauceConnectPath: '') {
-                         sh 'npm run test-single-run'
-                    }   
-                }
+       	    	   sh 'npm run test-single-run'
             }
         }
         stage('Deploy Application') {
