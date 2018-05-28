@@ -20,8 +20,8 @@ pipeline {
         }
         stage('Run Functional Tests') {
             steps {
-                sauceconnect(options: '', sauceConnectPath: '', useGeneratedTunnelIdentifier: true) {
-                    sauce('e16593fe-6899-463b-9595-e5ba5eb46563') {
+                sauce('e16593fe-6899-463b-9595-e5ba5eb46563') {
+                    sauceconnect(options: '', sauceConnectPath: '', useGeneratedTunnelIdentifier: true) {
                         sh 'npm run protractor'
                     }
                 }               
