@@ -3,7 +3,7 @@
   "private": true,
   "version": "1.0.2",
   "description": "A demo project for displaying CICD as a software process.",
-  "repository": "https://github.com/redmed86/pipeline-demo.git",
+  "repository": "https://github.com/aucelabs-sample-test-frameworks/sample-pipeline.git",
   "license": "MIT",
   "devDependencies": {
     "bower": "1.8.4",
