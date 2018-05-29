@@ -4,7 +4,7 @@ pipeline {
     stages {
         stage('Run Static Code Analysis') {
             steps {
-                sh "npm install"
+                sh 'npm install'
                 sh 'npm run lint'
             }
         }
@@ -21,7 +21,9 @@ pipeline {
         stage('Run Functional Tests') {
             steps {
                 sauce('e16593fe-6899-463b-9595-e5ba5eb46563') {
+                    sauceconnect(options: '', sauceConnectPath: '') {
                         sh 'npm run protractor'
+                    }
                 }
             }
         }
