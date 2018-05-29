@@ -10,7 +10,7 @@ pipeline {
         }
         stage('Run Unit Tests') {
             steps {
-                echo 'npm run test-single-run'
+                sh 'npm run test-single-run'
             }
         }
         stage('Deploy Application') {
