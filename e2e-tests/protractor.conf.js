@@ -10,7 +10,7 @@ exports.config = {
   allScriptsTimeout: 11000,
 
   specs: [
-    'scenarios.js'
+    'scenarios.spec.js'
   ],
 
   onPrepare: function () {
@@ -39,7 +39,7 @@ exports.config = {
   //   'browserName': 'chrome'
   // },
 
-  baseUrl: "https://cicd-angular-demo-app.cfapps.io/",
+  baseUrl: "http://localhost:7225/index.html",
 
   framework: 'jasmine',
 
