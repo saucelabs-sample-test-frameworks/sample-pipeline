@@ -49,7 +49,7 @@ describe('my app', function() {
 
     it('should render text that says the demo will pass', function() {
       expect(element.all(by.css('[ng-view] p')).get(1).getText()).
-        toMatch(/This demo is going to pass!/);
+        toMatch(/This demo is going to fail!/);
     });
 
   });
