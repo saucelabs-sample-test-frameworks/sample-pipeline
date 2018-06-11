@@ -1,3 +1,0 @@
-applications:
-- name: cicd-angular-demo-app
-  buildpack: https://github.com/cloudfoundry/nodejs-buildpack
