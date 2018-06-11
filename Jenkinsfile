@@ -2,30 +2,25 @@ pipeline {
     agent any
 
     stages {
-        stage('Run Static Code Analysis') {
+        stage('Build Application') {
             steps {
-                sh 'npm install'
-                sh 'npm run lint'
+                sh "npm install"
             }
         }
         stage('Run Unit Tests') {
             steps {
-                sauce('e16593fe-6899-463b-9595-e5ba5eb46563') {
-                    sh 'npm run test-single-run'
-                }
+                sh "npm test"
             }
         }
         stage('Deploy Application') {
             steps {
-            	sh 'npm start &'
+            	sh "npm start &"
             }
         }
         stage('Run Functional Tests') {
             steps {
                 sauce('e16593fe-6899-463b-9595-e5ba5eb46563') {
-                    sauceconnect(options: '', sauceConnectPath: '') {
-                        sh 'npm run protractor'
-                    }
+                    sh "npm run test-wdio"
                 }
             }
         }
