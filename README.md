@@ -1,4 +1,4 @@
-> **NOTE: br/>**
+> **NOTE: <br/>**
 > This project is not maintained by Sauce Labs anymore
 
 # pipeline-demo
